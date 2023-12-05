@@ -9,8 +9,9 @@ pipeline {
                 	sh 'npm install'
                 
                 // Build your Node.js application
-                	sh 'npm run build'
+               // 	sh 'npm run build'
 			sh 'zip -r server_build.zip .'
+			sh 'ls -al'
 		}
             }
         }
@@ -21,7 +22,7 @@ pipeline {
 			sh 'npm install'
                 
                 // Build your Node.js application
-                        sh 'npm run build'
+                //        sh 'npm run build'
                         sh 'zip -r app_build.zip .'
 		}
             }
