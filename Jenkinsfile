@@ -35,7 +35,8 @@ pipeline {
             }
             steps {
                 // Move the zip file to an S3 bucket
-                sh 'aws s3 cp app_build.zip s3://your_bucket_name/'
+                sh 'aws s3 cp app_build.zip s3://sumaiya-upgrad/'
+		sh 'aws s3 cp server_build.zip s3://sumaiya-upgrad/'
             }
         }
     }
