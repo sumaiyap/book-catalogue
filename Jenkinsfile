@@ -30,14 +30,39 @@ pipeline {
         
         stage('Move to S3') {
             environment {
-                AWS_ACCESS_KEY_ID = credentials('aws-access-key-id') // Add your AWS access key ID credentials ID
-                AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key') // Add your AWS secret access key credentials ID
+                AWS_ACCESS_KEY_ID = credentials('aws-access-key-id') 
+                AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key') 
             }
             steps {
-                // Move the zip file to an S3 bucket
+           
                 sh 'aws s3 cp client/app_build.zip s3://sumaiya-upgrad/'
-		sh 'aws s3 cp server/server_build.zip s3://sumaiya-upgrad/'
+		        sh 'aws s3 cp server/server_build.zip s3://sumaiya-upgrad/'
             }
+        }
+        stage('Deploy') {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('aws-access-key-id') 
+                AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key') 
+            }
+            steps {
+                script {
+            
+                    def deployment = [
+                        applicationName: 'employee-client',
+                        deploymentGroupName: 'employee-client',
+                        revision: [
+                            revisionType: 'S3',
+                            s3Location: [
+                                bucket: 'sumaiya-upgrad',
+                                bundleType: 'zip',
+                                key: 'app_build.zip'
+                            ]
+                        ]
+                    ]
+                    step([$class: 'CodeDeployPublisher', deployment: deployment])
+                }
+            }
+        }
         }
     }
 }
