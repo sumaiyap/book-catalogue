@@ -38,9 +38,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh '''
-                        aws deploy update-deployment-group --application-name 'employee-client' --current-deployment-group-name 'employee-client' --deployment-timeout-in-minutes 60
-                    '''
+                 
 
                     sh '''
                         aws deploy create-deployment \
