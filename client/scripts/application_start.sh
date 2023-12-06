@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /home/ubuntu/node_app/client/
-npm install
+npm install --legacy-peer-deps
 npm start
