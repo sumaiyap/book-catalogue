@@ -5,26 +5,17 @@ pipeline {
         stage('Build server app') {
             steps {
                dir('server'){ 
-                // Install Node.js dependencies
-                	sh 'npm install'
-                
-                // Build your Node.js application
-               // 	sh 'npm run build'
-			sh 'zip -r server_build.zip .'
-			sh 'ls -al'
-		}
+			        sh 'zip -r server_build.zip .'
+			        sh 'ls -al'
+		        }
             }
         }
         
         stage('Build client app') {
             steps {
                 dir('client') { 
-			sh 'npm install'
-                
-                // Build your Node.js application
-                //        sh 'npm run build'
                         sh 'zip -r app_build.zip .'
-		}
+		        }
             }
         }
         
@@ -53,10 +44,7 @@ pipeline {
                             --application-name 'employee-client' \
                             --deployment-group-name 'employee-client' \
                             --s3-location bucket='sumaiya-upgrad',key='app_build.zip',bundleType=zip
-                    '''
-            
-                    
-                   
+                    '''            
                 }
             }
         }
