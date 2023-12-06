@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ec2-user/app_build
+cd /home/ubuntu/app_build
 npm start
