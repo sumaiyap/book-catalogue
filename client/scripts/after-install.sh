@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /home/ubuntu
-unzip -o /home/ubuntu/app_build.zip
+cd /home/ubuntu/node_app/client
+
 

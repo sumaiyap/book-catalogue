@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ubuntu/app_build
+cd /home/ubuntu/node_app/client/
 npm start
