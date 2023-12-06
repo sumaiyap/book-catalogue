@@ -46,20 +46,16 @@ pipeline {
             }
             steps {
                 script {
+
+                    sh '''
+                        aws deploy create-deployment \
+                            --application-name 'employee-client' \
+                            --deployment-group-name 'employee-client' \
+                            --s3-location bucket='sumaiya-upgrad',key='app_build.zip',bundleType=zip
+                    '''
             
-                    def deployment = [
-                        applicationName: 'employee-client',
-                        deploymentGroupName: 'employee-client',
-                        revision: [
-                            revisionType: 'S3',
-                            s3Location: [
-                                bucket: 'sumaiya-upgrad',
-                                bundleType: 'zip',
-                                key: 'app_build.zip'
-                            ]
-                        ]
-                    ]
-                    step([$class: 'CodeDeployPublisher', deployment: deployment])
+                    
+                   
                 }
             }
         }
