@@ -35,8 +35,8 @@ pipeline {
             }
             steps {
            
-                sh 'aws s3 cp client/app_build.zip s3://sumaiya-upgrad/'
-		        sh 'aws s3 cp server/server_build.zip s3://sumaiya-upgrad/'
+          //      sh 'aws s3 cp client/app_build.zip s3://sumaiya-upgrad/'
+		        sh 'aws s3 cp server_build.zip s3://sumaiya-upgrad/'
             }
         }
         // stage('Deploy client') {
