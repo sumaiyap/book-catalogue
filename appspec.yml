@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/node_app/server
+    destination: /home/ubuntu/node_app
 permissions:
   - object: /
     owner: root
