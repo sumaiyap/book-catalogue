@@ -10,8 +10,22 @@ const {
 const app = express();
 app.use(express.json());
 const cors = require("cors");
-
 const genericError = "Sorry, something went wrong!";
+const fs = require("fs");
+const path = require("path");
+
+// Create a write stream to the log file
+const logStream = fs.createWriteStream(path.join(__dirname, "logs.txt"), { flags: "a" });
+
+// Override the console.log function to redirect output to the log file
+const originalLog = console.log;
+console.log = function (message) {
+  const logMessage = `[${new Date().toISOString()}] ${message}\n`;
+  logStream.write(logMessage);
+  originalLog.apply(console, arguments);
+};
+
+
 
 
 
